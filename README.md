@@ -1,3 +1,5 @@
+![](https://github.com/tmw/textmatrix/workflows/Elixir%20CI/badge.svg)
+
 # Textmatrix
 
 Textmatrix is a _thin_ wrapper around Charlists
