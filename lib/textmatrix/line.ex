@@ -68,7 +68,7 @@ defmodule Textmatrix.Line do
   def to_string(%Line{} = line, emptychar \\ @default_empty_char) do
     line.chars
     |> Enum.map(&translate_char(&1, emptychar))
-    |> IO.iodata_to_binary()
+    |> IO.chardata_to_string()
   end
 
   defp translate_char(nil, emptychar), do: emptychar
