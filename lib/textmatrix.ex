@@ -9,7 +9,7 @@ defmodule Textmatrix do
   iex> Textmatrix.new() 
   ...> |> Textmatrix.write(2, 2, "Hello, world!") 
   ...> |> Textmatrix.to_string()
-  \n\n  Hello, world!
+  "\\n\\n  Hello, world!"
   """
 
   alias Textmatrix.Buffer
