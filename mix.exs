@@ -48,7 +48,7 @@ defmodule Textmatrix.MixProject do
   defp docs() do
     [
       main: "readme",
-      name: "Texstmatrix",
+      name: "Textmatrix",
       source_ref: "v#{@version}",
       canonical: "http://hexdocs.pm/textmatrix",
       source_url: "https://github.com/tmw/textmatrix",
