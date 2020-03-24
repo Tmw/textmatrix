@@ -2,18 +2,27 @@
 
 # Textmatrix
 
-Textmatrix is a _thin_ wrapper around Charlists
-to make working with two dimensional text a breeze.
-
-Once you're done, turn it into a multiline string.
+Textmatrix is a _thin_ wrapper around charlist to make working with two dimensional text a breeze. Once you're done, turn it into a multiline string.
 
 ## Example
 
 ```elixir
-Textmatrix.new()
-|> Textmatrix.write(2, 2, "Hello, world!")
-|> Textmatrix.to_string()
-\n\n  Hello, world!
+buffer = 
+  Textmatrix.new()
+  |> Textmatrix.write(2, 2, "+---------------+")
+  |> Textmatrix.write(2, 3, "| Hello, world! |")
+  |> Textmatrix.write(2, 4, "+---------------+")
+
+IO.puts(buffer)
+```
+
+which will result in the example below being printed to stdout.
+
+```txt
+
+  +---------------+
+  | Hello, world! |
+  +---------------+
 ```
 
 ## Installation
