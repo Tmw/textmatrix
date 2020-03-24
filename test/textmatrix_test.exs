@@ -20,6 +20,19 @@ defmodule TextmatrixTest do
       assert "\n\n  line one\n\n  line two" === Textmatrix.to_string(buffer)
     end
 
+    test "writes text vertically" do
+      buffer =
+        Textmatrix.new()
+        |> Textmatrix.write_vertical(2, 2, "Heynow!")
+
+      expected =
+        "Heynow!"
+        |> String.graphemes()
+        |> Enum.join("\n  ")
+
+      assert Textmatrix.to_string(buffer) == "\n\n  #{expected}\n"
+    end
+
     test "overrides characters when overlap" do
       buffer =
         Textmatrix.new()

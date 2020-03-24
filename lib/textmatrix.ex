@@ -16,5 +16,6 @@ defmodule Textmatrix do
 
   defdelegate new(), to: Buffer
   defdelegate write(buffer, x, y, string), to: Buffer
+  defdelegate write_vertical(buffer, x, y, string), to: Buffer
   defdelegate to_string(buffer), to: Buffer
 end

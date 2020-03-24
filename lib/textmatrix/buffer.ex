@@ -1,7 +1,6 @@
 defmodule Textmatrix.Buffer do
   @moduledoc """
-  Textmatrix.Buffer encapsules the characters present in the matrix split up in
-  lines an characters.
+  `Textmatrix.Buffer{}` encapsules the characters present in the matrix split up in lines an characters.
   """
 
   # the default filling character is a space
@@ -53,6 +52,26 @@ defmodule Textmatrix.Buffer do
     lines =
       List.update_at(buffer.lines, y, fn line ->
         Line.write_string(line, x, string)
+      end)
+
+    %Buffer{buffer | lines: lines}
+  end
+
+  @doc """
+  write_vertical/4 takes the buffer, x and y location and a string to write at the given y location
+  going downwards. It returns the updated buffer.
+  """
+  @spec write_vertical(Buffer.t(), non_neg_integer(), non_neg_integer(), binary()) :: Buffer.t()
+  def write_vertical(%Buffer{} = buffer, x, y, string)
+      when is_integer(x) and is_integer(y) and is_binary(string) and x >= 0 and y >= 0 do
+    buffer = Buffer.ensure_capacity(buffer, y + String.length(string))
+
+    lines =
+      string
+      |> String.graphemes()
+      |> Enum.with_index(y)
+      |> Enum.reduce(buffer.lines, fn {char, index}, acc ->
+        List.update_at(acc, index, &Line.write_string(&1, x, char))
       end)
 
     %Buffer{buffer | lines: lines}
