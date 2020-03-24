@@ -7,11 +7,22 @@ Textmatrix is a _thin_ wrapper around charlist to make working with two dimensio
 ## Example
 
 ```elixir
-buffer = 
+buffer =
   Textmatrix.new()
-  |> Textmatrix.write(2, 2, "+---------------+")
-  |> Textmatrix.write(2, 3, "| Hello, world! |")
-  |> Textmatrix.write(2, 4, "+---------------+")
+
+  # Draw top line
+  |> Textmatrix.write(2, 2, "+---------------------+")
+
+  # Draw left border
+  |> Textmatrix.write_vertical(2, 3, "|||")
+
+  # Draw right border
+  |> Textmatrix.write_vertical(24, 3, "|||")
+
+  # Draw text
+  |> Textmatrix.write(7, 4, "Hello, world!")
+  # Draw bottom line
+  |> Textmatrix.write(2, 6, "+---------------------+")
 
 IO.puts(buffer)
 ```
@@ -20,9 +31,12 @@ which will result in the example below being printed to stdout.
 
 ```txt
 
-  +---------------+
-  | Hello, world! |
-  +---------------+
+
+  +---------------------+
+  |                     |
+  |    Hello, world!    |
+  |                     |
+  +---------------------+
 ```
 
 ## Installation
